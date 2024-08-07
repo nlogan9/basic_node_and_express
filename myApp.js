@@ -33,7 +33,11 @@ app.get('/now', function(req, res, next) {
 });
 
 app.get('/:word/echo', function(req, res) {
-    res.json({"echo": req.params.word})
+    res.json({"echo": req.params.word});
+});
+
+app.route('/name').get(function(req, res) {
+    res.json({"name": req.query.first + " " + req.query.last});
 });
 
 console.log("Hello World");
