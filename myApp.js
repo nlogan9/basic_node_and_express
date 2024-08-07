@@ -2,6 +2,11 @@ let express = require('express');
 let app = express();
 let dotenv = require('dotenv').config();
 
+app.use('/', function(req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip);
+    next();
+})
+
 app.get('/', function(req, res) {
     absolutePath = __dirname + '/views/index.html'
     res.sendFile(absolutePath);
@@ -19,6 +24,8 @@ app.get('/json', function(req, res) {
 
     res.json({"message": msg});
 })
+
+
 
 console.log("Hello World");
 
